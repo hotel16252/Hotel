@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex">
+  <title>অ্যাডমিন প্যানেল</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@600;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/common.css">
+  <link rel="stylesheet" href="/admin.css">
+</head>
+<body>
+  <!-- লগইন -->
+  <div class="login gutter" id="login" hidden>
+    <form class="login-box" id="loginForm">
+      <h1 id="loginBrand">অ্যাডমিন প্যানেল</h1>
+      <p class="hint">স্টাফের জন্য। পাসওয়ার্ড দিয়ে ঢুকুন।</p>
+      <label for="pw">পাসওয়ার্ড</label>
+      <input id="pw" type="password" autocomplete="current-password" required>
+      <p class="err" id="loginErr" role="alert" hidden></p>
+      <button class="btn btn-brand btn-block" type="submit">ঢুকুন</button>
+    </form>
+  </div>
+
+  <!-- মূল অ্যাপ -->
+  <div id="app" hidden>
+    <header class="top gutter">
+      <div class="top-in">
+        <div class="logo" id="shopName"></div>
+        <nav class="tabs" id="tabs" aria-label="প্যানেলের ভাগ">
+          <button type="button" data-tab="orders">অর্ডার <span class="badge" id="newBadge" hidden></span></button>
+          <button type="button" data-tab="menu">মেনু ও দাম</button>
+          <button type="button" data-tab="qr">QR কোড</button>
+          <button type="button" data-tab="settings">সেটিংস</button>
+        </nav>
+        <div class="top-acts">
+          <span class="live" id="live"><i></i><span id="liveText">লাইভ</span></span>
+          <button type="button" class="btn btn-sm btn-ghost" id="soundBtn">সাউন্ড বন্ধ</button>
+          <a class="btn btn-sm btn-ghost" href="/" target="_blank" rel="noopener">কাস্টমার পাতা</a>
+          <button type="button" class="btn btn-sm btn-ghost" id="logout">লগআউট</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="page gutter">
+      <section id="tab-orders" hidden>
+        <div class="stats" id="stats"></div>
+        <div class="colchips" id="colChips"></div>
+        <div class="board" id="board"></div>
+      </section>
+
+      <section id="tab-menu" hidden></section>
+      <section id="tab-qr" hidden></section>
+      <section id="tab-settings" hidden></section>
+    </main>
+  </div>
+
+  <!-- খাবার যোগ / সম্পাদনার ডায়ালগ -->
+  <dialog id="itemDlg">
+    <form id="itemForm" novalidate>
+      <h2 id="itemDlgTitle">নতুন খাবার</h2>
+      <div class="f"><label for="fName">নাম</label><input id="fName" maxlength="80" autocomplete="off"></div>
+      <div class="f"><label for="fDesc">বর্ণনা (ঐচ্ছিক)</label><input id="fDesc" maxlength="160" autocomplete="off"></div>
+      <div class="f2">
+        <div class="f"><label for="fPrice">দাম (টাকা)</label><input id="fPrice" inputmode="numeric" autocomplete="off"></div>
+        <div class="f"><label for="fCat">ক্যাটাগরি</label><select id="fCat"></select></div>
+      </div>
+      <div class="f">
+        <span class="lbl">ছবি</span>
+        <div class="imgbox">
+          <div class="preview" id="fPreview"></div>
+          <div class="imgacts">
+            <input type="file" id="fFile" accept="image/jpeg,image/png,image/webp" hidden>
+            <div class="row"><button type="button" class="btn btn-sm" id="fPick">ছবি বেছে নিন</button><button type="button" class="btn btn-sm btn-ghost" id="fClear">ছবি সরান</button></div>
+            <p class="hint">ছবি না দিলে নামের প্রথম অক্ষর দেখাবে।</p>
+          </div>
+        </div>
+      </div>
+      <label class="sw"><input type="checkbox" id="fAvail" checked><span class="knob"></span><span>আজ পাওয়া যাচ্ছে</span></label>
+      <p class="err" id="fErr" role="alert" hidden></p>
+      <div class="dlg-acts"><button type="button" class="btn" id="fCancel">বাতিল</button><button type="submit" class="btn btn-brand" id="fSave">সংরক্ষণ করুন</button></div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="/admin.js"></script>
+</body>
+</html>

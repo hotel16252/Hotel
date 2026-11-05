@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#C8281E">
+  <title>মেনু ও অর্ডার</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@600;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/common.css">
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+  <header class="hero gutter">
+    <div class="wrap">
+      <span class="table-pill" id="tablePill" hidden></span>
+      <h1 id="brand">&nbsp;</h1>
+      <p id="tagline"></p>
+    </div>
+  </header>
+
+  <div class="closed gutter" id="closedBanner" hidden>
+    <div class="wrap">এই মুহূর্তে অর্ডার নেওয়া বন্ধ আছে। মেনু দেখতে পারবেন, কিন্তু অর্ডার করতে স্টাফকে বলুন।</div>
+  </div>
+
+  <div class="toolbar gutter">
+    <div class="wrap">
+      <label class="search">
+        <span class="sr">খাবার খুঁজুন</span>
+        <input id="search" type="search" placeholder="খাবার খুঁজুন" autocomplete="off">
+      </label>
+      <nav class="chips" id="chips" aria-label="মেনুর ভাগ"></nav>
+    </div>
+  </div>
+
+  <main class="wrap gutter" id="menu" aria-live="polite">
+    <p class="state">মেনু আনা হচ্ছে…</p>
+  </main>
+
+  <button type="button" class="order-banner" id="orderBanner" hidden></button>
+
+  <div class="cartbar gutter" id="cartbar" hidden>
+    <button type="button" class="btn btn-brand" id="openCart"></button>
+  </div>
+
+  <div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+    <div class="sheet-body gutter" id="sheetBody"></div>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="/app.js"></script>
+</body>
+</html>
